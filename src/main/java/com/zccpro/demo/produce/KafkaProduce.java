@@ -24,7 +24,7 @@ public class KafkaProduce {
     }
 
     /**
-     * ·¢ËÍÏûÏ¢
+     * å‘é€æ¶ˆæ¯
      * 
      * @param topic
      * @param key
@@ -32,27 +32,27 @@ public class KafkaProduce {
      */
     public void sendMsg(String topic, byte[] key, byte[] value) {
 
-        // ÊµÀı»¯produce
+        // å®ä¾‹åŒ–produce
         KafkaProducer<byte[], byte[]> kp = new KafkaProducer<byte[], byte[]>(
                 properties);
 
-        // ÏûÏ¢·â×°
+        // æ¶ˆæ¯å°è£…
         ProducerRecord<byte[], byte[]> pr = new ProducerRecord<byte[], byte[]>(
                 topic, key, value);
 
-        // ·¢ËÍÊı¾İ
+        // å‘é€æ•°æ®
         kp.send(pr, new Callback() {
-            // »Øµ÷º¯Êı
+            // å›è°ƒå‡½æ•°
             public void onCompletion(RecordMetadata metadata,
                     Exception exception) {
-                if (null != exception) {
-                    System.out.println("¼ÇÂ¼µÄoffsetÔÚ:" + metadata.offset());
+                if (null != metadata) {
+                    System.out.println("è®°å½•çš„offsetåœ¨:" + metadata.offset());
                     System.out.println(exception.getMessage() + exception);
                 }
             }
         });
 
-        // ¹Ø±Õproduce
+        // å…³é—­produce
         kp.close();
     }
 }

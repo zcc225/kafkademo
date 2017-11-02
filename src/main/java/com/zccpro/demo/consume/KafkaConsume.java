@@ -37,7 +37,7 @@ public class KafkaConsume {
     }
 
     /**
-     * 获取消息
+     * 鑾峰彇娑堟伅
      * 
      * @throws Exception
      */
@@ -65,8 +65,9 @@ public class KafkaConsume {
 
         while (it.hasNext()) {
             String json = it.next().message();
+            	String string = new String(json.getBytes(),"UTF-8");
 //            User user = (User) JsonUtils.JsonToObj(json, User.class);
-            System.out.println(json);
+            System.out.println(string);
         }
     }
 }

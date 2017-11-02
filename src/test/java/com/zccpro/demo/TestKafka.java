@@ -1,5 +1,7 @@
 package com.zccpro.demo;
 
+import java.nio.charset.Charset;
+
 import org.junit.Test;
 
 import com.zccpro.demo.consume.KafkaConsume;
@@ -11,7 +13,7 @@ public class TestKafka {
 	@org.junit.Test
 	public void testproduce(){
 		KafkaProduce kafkaProduce = new KafkaProduce();
-		kafkaProduce.sendMsg("testzcc001","001key".getBytes(), "001value1233".getBytes());
+		kafkaProduce.sendMsg("testzcc001","001key".getBytes(), "张昌超".getBytes());
 	}
 	
 	@org.junit.Test
