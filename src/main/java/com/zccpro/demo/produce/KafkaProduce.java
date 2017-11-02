@@ -45,7 +45,7 @@ public class KafkaProduce {
             // 回调函数
             public void onCompletion(RecordMetadata metadata,
                     Exception exception) {
-                if (null != metadata) {
+                if (null != exception) {
                     System.out.println("记录的offset在:" + metadata.offset());
                     System.out.println(exception.getMessage() + exception);
                 }
@@ -54,5 +54,15 @@ public class KafkaProduce {
 
         // 关闭produce
         kp.close();
+    }
+    
+    /**
+     * 发送消息
+     * 
+     * @param topic
+     * @param value
+     */
+    public void sendMsg(String topic,String msg){
+    	sendMsg(topic, null, msg.getBytes());
     }
 }
